@@ -4,22 +4,31 @@
   height: 95%;
   width: 90%;
   padding: 10px;
+  border-radius: 10px;
+
+  #asset-manager {
+    margin-left: auto;
+  }
 
   .subject {
     width: 100%;
     height: fit-content;
     position: relative;
 
-    >h2 {
-      font-size: 1.5rem;
+    >p {
+      font-size: 1.2rem;
       margin: 0;
+      width: max-content;
+      border: solid 1px var(--theme-on-app);
+      padding: 15px;
+      border-radius: 10px;
     }
 
     >span {
       border-left: 1px solid black;
-      height: calc(100% - 1.8rem); // TODO: size properly
+      height: calc(100% - 1.5rem - 45px); // TODO: size properly
       left: 10px;
-      top: 1.8rem;
+      top: calc(1.5rem + 35px);
       display: block;
       width: 0;
       position: absolute;

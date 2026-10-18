@@ -48,12 +48,16 @@
 
 <template>
     <div class="side-panel">
-        <button @click="openAssetManager">
+        <button id="asset-manager" @click="openAssetManager">
             <i class="fa-solid fa-file-pen"></i>
-            Asset Manager
         </button>
         <div v-for="(subject, subjectIdx) in subjects" :key="subjectIdx" class="subject">
-            <h2>{{ subject.name }}</h2>
+            <p
+                :style="`background: linear-gradient(90deg, #3FD421 ${subject.completion * 100}%,
+                    #ffffff ${Math.max(subject.completion * 100 + 10, 100)}%);`"
+            >
+                {{ subject.name }}
+            </p>
             <span></span>
 
             <div v-for="(topic, topicIdx) in subject.topics" :key="topicIdx" class="topic">

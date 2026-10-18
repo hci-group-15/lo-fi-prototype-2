@@ -18,5 +18,23 @@
     grid-area: main;
     width: 100%;
     height: 100vh;
+    position: relative;
+
+    >.chat-input-wrapper {
+      width: 95%;
+      position: absolute;
+      right: 2.5%;
+      bottom: 10px;
+      border-radius: 20px;
+      border: solid 1px var(--theme-on-app);
+
+      >.chat-input {
+        width: calc(100% - 100px);
+        margin-left: 30px;
+        padding: 10px;
+        font-size: 1.2rem;
+        border: none;
+      }
+    }
   }
 }

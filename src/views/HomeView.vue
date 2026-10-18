@@ -14,6 +14,9 @@
         </div>
         <div class="main-wrapper">
             <h1>Hello World</h1>
+            <div class="chat-input-wrapper">
+                <input type="text" class="chat-input" placeholder="Ask Anything">
+            </div>
         </div>
     </div>
 </template>
