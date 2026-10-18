@@ -1,0 +1,42 @@
+:root {
+  --fg-col: #000000
+}
+
+body {
+  font-family: sans-serif;
+}
+
+#title {
+  font-style: italic;
+  margin-left: auto;
+  margin-right: auto;
+  width: min-content;
+}
+
+.grid {
+  display: grid;
+  grid-template:
+    "side main main"
+    "side main main";
+
+  >.side {
+    grid-area: "side";
+  }
+
+  >.main {
+    grid-area: "main";
+  }
+}
+
+.my-class {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  >p {
+    padding: 50px;
+    border-radius: 50px;
+    border: solid 1px var(--fg-col);
+    background: linear-gradient(90deg, #00ff00 30%, #ffffff 50%);
+  }
+}

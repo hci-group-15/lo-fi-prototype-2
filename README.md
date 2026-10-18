@@ -5,9 +5,12 @@ Lo-Fi Prototype 2 (study flow)
 Learning Vue:
 - [Official Docs](https://vuejs.org/guide/introduction.html)
 - Docs here
+- [MDN Docs](https://developer.mozilla.org/en-US/)
 - [MusicPlayer](https://github.com/janishutz/MusicPlayer/tree/dev/web) by @janishutz (as a reference for implementation)
 - [EYE-TAP frontend](https://github.com/eye-tap/frontend) (as a reference for implementation)
 - Any other docs online
+- [FontAwesome](https://fontawesome.com/search?ic=free-collection)
+
 
 ### Development
 There are two ways of installing things, one is directly on your system (install `node.js`), or by running the docker container I created for you.
@@ -26,6 +29,7 @@ or to start the container and removing it whenever you exit it:
 docker run -it -p 8081:8081 --rm -v .:/mnt ghcr.io/janishutz/dev-container-node
 ```
 
+
 ### Dependency management
 Vue is a JS/TS framework and thus uses `npm` or `yarn`. Which one you prefer doesn't matter, both are installed in the container.
 I personally am still using `npm` over `yarn` in many cases, but am currently switching to using `yarn` more, because it is the better tool in most cases.
@@ -40,6 +44,7 @@ Basic `npm` and `yarn` commands:
 | Install new dep | `npm i <pkg name>` | `yarn add <pkg name>` |
 | Install new dep as dev dep | `npm i -D <pkg name>` | `yarn add --dev <pkg name>`
 | Remove dep | `npm uninstall <pkg name>` | `yarn remove <pkg name>` |
+
 
 ### Viewing the page
 In the docker container, run

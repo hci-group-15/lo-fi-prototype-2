@@ -1,0 +1,5 @@
+<template>
+    <div>
+        <h1>Bye World</h1>
+    </div>
+</template>

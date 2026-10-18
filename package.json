@@ -16,12 +16,19 @@
     "vue-router": "^5.2.0"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
     "@tsconfig/node24": "^24.0.4",
     "@types/node": "^24.13.3",
     "@vitejs/plugin-vue": "^6.0.8",
     "@vue/tsconfig": "^0.9.1",
+    "eslint": "^10.13.0",
+    "eslint-plugin-vue": "^10.11.1",
+    "globals": "^17.13.0",
     "npm-run-all2": "^9.0.2",
+    "sass-embedded": "^1.105.2",
     "typescript": "~6.0.0",
+    "typescript-eslint": "^8.71.2",
     "vite": "^8.1.5",
     "vite-plugin-vue-devtools": "^8.1.5",
     "vue-tsc": "^3.3.7"
