@@ -29,6 +29,13 @@ or to start the container and removing it whenever you exit it:
 docker run -it -p 8081:8081 --rm -v .:/mnt ghcr.io/janishutz/dev-container-node
 ```
 
+### Automatic container
+If you only want to run the vue app without managing deps or anything yourself, you can instead run this command:
+```bash
+docker run -it -p 8081:8081 --rm -v .:/mnt ghcr.io/janishutz/vue-dev-runner
+```
+This will do all those things for you automatically.
+
 
 ### Dependency management
 Vue is a JS/TS framework and thus uses `npm` or `yarn`. Which one you prefer doesn't matter, both are installed in the container.
