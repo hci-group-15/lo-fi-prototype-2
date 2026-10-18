@@ -52,3 +52,9 @@ In the docker container, run
 npm run dev -- --host
 ```
 Note that you only need the `-- --host` argument because of how docker networking in bridge mode works.
+
+
+### Colours
+Remember, don't "hard-code" colours, use `var(--primary)` for the primary colour.
+
+You may find the colour definitions in `./src/scss/_main.scss`, inside the `:root` element's style.
