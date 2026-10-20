@@ -40,7 +40,7 @@
             width: 100vw;
             height: 100vh;
             position: absolute;
-            background-color: var( --theme-backdrop );
+            background-color: var( --theme-shadow );
             top: 0;
             left: 0;
             overflow: hidden;
