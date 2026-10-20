@@ -4,14 +4,24 @@ import {
 
 const router = createRouter( {
     'history': createWebHistory( import.meta.env.BASE_URL ),
-    'routes': [ {
-        'path': '/',
-        'name': 'home',
-        'component': () => import( '@/views/HomeView.vue' ),
-        'meta': {
-            'title': 'Home'
+    'routes': [
+        {
+            'path': '/',
+            'name': 'home',
+            'component': () => import( '@/views/HomeView.vue' ),
+            'meta': {
+                'title': 'Home'
+            }
+        },
+        {
+            'path': '/chat',
+            'name': 'chat',
+            'component': () => import( '@/views/ChatView.vue' ),
+            'meta': {
+                'title': 'Chat'
+            }
         }
-    } ]
+    ]
 } );
 
 router.afterEach( to => {

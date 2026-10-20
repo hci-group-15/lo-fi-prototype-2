@@ -3,6 +3,10 @@
         type Ref,
         ref
     } from 'vue';
+    import {
+        showAssetManger,
+        showBranchView
+    } from '@/ts/state';
     import type {
         Topic
     } from '@/ts/types';
@@ -10,12 +14,13 @@
     import {
         gradientCols
     } from '@/ts/theme';
-    import {
-        showAssetManger
-    } from '@/ts/state';
 
     const openAssetManager = () => {
         showAssetManger.value = true;
+    };
+
+    const openBranchView = () => {
+        showBranchView.value = true;
     };
 
     // Define subjects to render
@@ -24,19 +29,16 @@
         'completion': 0.5,
         'topics': [
             {
-
                 'name': 'ODEs',
                 'completion': 1,
                 'topics': []
             },
             {
-
                 'name': 'Differentiation',
                 'completion': 1,
                 'topics': []
             },
             {
-
                 'name': 'Integration',
                 'completion': 0.5,
                 'topics': [ {
@@ -52,6 +54,9 @@
 <template>
     <div class="side-panel">
         <button id="asset-manager" @click="openAssetManager">
+            <i class="fa-solid fa-file-pen"></i>
+        </button>
+        <button id="asset-manager" @click="openBranchView">
             <i class="fa-solid fa-file-pen"></i>
         </button>
         <div v-for="(subject, subjectIdx) in subjects" :key="subjectIdx" class="subject">
