@@ -22,7 +22,7 @@ docker run -it -p 8081:8081 --name prototype -v .:/mnt ghcr.io/janishutz/dev-con
 ```
 To launch the container again later, you can use
 ```bash
-docker start prototype
+docker start -i prototype
 ```
 or to start the container and removing it whenever you exit it:
 ```bash
