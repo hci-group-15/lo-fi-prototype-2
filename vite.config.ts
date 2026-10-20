@@ -17,5 +17,14 @@ export default defineConfig( {
     'server': {
         'port': 8081,
         'allowedHosts': true
+    },
+    'css': {
+        'preprocessorOptions': {
+            'scss': {
+                'additionalData': `
+@use "@/scss/main.scss" as *;
+`
+            }
+        }
     }
 } );

@@ -15,6 +15,10 @@
         showAssetManger.value = true;
     };
 
+    const gradientCols = {
+        'start': '#ffffff',
+        'end': '#000000'
+    };
     // Define subjects to render
     const subjects: Ref<Topic[]> = ref( [ {
         'name': 'Analysis',
@@ -53,8 +57,8 @@
         </button>
         <div v-for="(subject, subjectIdx) in subjects" :key="subjectIdx" class="subject">
             <p
-                :style="`background: linear-gradient(90deg, #3FD421 ${subject.completion * 100}%,
-                    #ffffff ${Math.max(subject.completion * 100 + 10, 100)}%);`"
+                :style="`background: linear-gradient(90deg, ${gradientCols.start} ${subject.completion * 100}%,
+                ${gradientCols.end} ${Math.max(subject.completion * 100 + 10, 100)}%);`"
             >
                 {{ subject.name }}
             </p>
@@ -62,8 +66,8 @@
 
             <div v-for="(topic, topicIdx) in subject.topics" :key="topicIdx" class="topic">
                 <p
-                    :style="`background: linear-gradient(90deg, #3FD421 ${topic.completion * 100}%,
-                    #ffffff ${Math.max(topic.completion * 100 + 10, 100)}%);`"
+                    :style="`background: linear-gradient(90deg, ${gradientCols.start} ${topic.completion * 100}%,
+                    ${gradientCols.end} ${Math.max(topic.completion * 100 + 10, 100)}%);`"
                 >
                     {{ topic.name }}
                 </p>
