@@ -3,14 +3,14 @@
         showAssetManger,
         showBranchView
     } from '@/ts/state';
-    import AssetManager from '@/components/assetManager/AssetManager.vue';
+    import AssetManagerPopup from '@/components/assetManager/AssetManagerPopup.vue';
     import BranchTree from '@/components/popups/BranchTree.vue';
     import SidePanel from '@/components/SidePanel.vue';
 </script>
 
 <template>
     <div class="home-positioner">
-        <AssetManager v-model="showAssetManger" />
+        <AssetManagerPopup v-model="showAssetManger" />
         <BranchTree v-model="showBranchView" />
         <div class="sidepanel-wrapper">
             <SidePanel />
