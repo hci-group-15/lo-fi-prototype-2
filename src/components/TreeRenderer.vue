@@ -2,6 +2,9 @@
     import type {
         Topic
     } from '@/ts/types';
+    import {
+        gradientCols
+    } from '@/ts/theme';
 
     const props = defineProps<{
         'topics': Topic[]
@@ -35,8 +38,8 @@
                 />
             </svg>
             <p
-                :style="`background: linear-gradient(90deg, #3FD421 ${topic.completion * 100}%,
-                    #ffffff ${Math.max(topic.completion * 100 + 10, 100)}%);`"
+                :style="`background: linear-gradient(90deg, ${gradientCols.start} ${topic.completion * 100}%,
+                ${gradientCols.end} ${Math.max(topic.completion * 100 + 10, 100)}%);`"
             >
                 {{ topic.name }}
             </p>

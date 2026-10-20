@@ -13,6 +13,11 @@ const themes: Ref<string[]> = ref( [
 const darkMode: Ref<boolean> = ref( localStorage.getItem( 'theme-mode' ) !== 'light' );
 const selectedTheme = ref( themes.value[ 0 ]! );
 
+export const gradientCols = {
+    'start': '#ffffff',
+    'end': '#000000'
+};
+
 let currTheme = '';
 
 const formatThemeName = ( base: string ) => {

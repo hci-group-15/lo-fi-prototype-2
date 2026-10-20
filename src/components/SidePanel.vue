@@ -8,6 +8,9 @@
     } from '@/ts/types';
     import TreeRenderer from './TreeRenderer.vue';
     import {
+        gradientCols
+    } from '@/ts/theme';
+    import {
         showAssetManger
     } from '@/ts/state';
 
@@ -15,10 +18,6 @@
         showAssetManger.value = true;
     };
 
-    const gradientCols = {
-        'start': '#ffffff',
-        'end': '#000000'
-    };
     // Define subjects to render
     const subjects: Ref<Topic[]> = ref( [ {
         'name': 'Analysis',
