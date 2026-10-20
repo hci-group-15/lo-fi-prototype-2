@@ -1,22 +1,5 @@
 @forward '@/scss/theme.scss';
 
-/* 
-  global variables
-*/
-:root {
-  --theme-primary: #008CFF;
-  --theme-on-primary: #FFFFFF;
-  --theme-secondary: #04D3C2;
-  --theme-on-secondary: #000000;
-  --theme-bg: #ffffff;
-  --theme-on-bg: #000000;
-  --theme-app: #D9D9D9;
-  --theme-on-app: #000000;
-  --theme-surface: #EBEBEB;
-  --theme-on-surface: #000000;
-  --theme-backdrop: rgba(0, 0, 0, 0.7);
-}
-
 // Configure main window and body to remove margins
 body,
 window {

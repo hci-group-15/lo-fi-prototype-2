@@ -4,6 +4,7 @@
         selectedTheme,
         themes
     } from './ts/theme';
+    import SwitchOption from './components/SwitchOption.vue';
     import {
         ref
     } from 'vue';
