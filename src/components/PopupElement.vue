@@ -1,7 +1,7 @@
 <!-- This code is from https://github.com/janishutz/MusicPlayer/blob/dev/web/src/components/popups/PopupElement.vue -->
 <template>
     <div :class="['popup', isOpen ? undefined : 'hidden' ]">
-        <div class="popup-backdrop"></div>
+        <div class="popup-backdrop" @click="closePopup"></div>
         <div class="popup-main">
             <i v-if="props.showClose" class="fa-solid fa-xmark close-icon" @click="closePopup()"></i>
             <slot></slot>
