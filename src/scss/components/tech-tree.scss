@@ -1,0 +1,27 @@
+.tech-tree-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  >.tree-edge,
+  >.tree-node {
+    position: absolute;
+    text-align: center;
+  }
+
+  >.tree-edge {
+    border-bottom: 2px solid var(--theme-on-bg);
+
+    &::after {
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      border-bottom: 5px solid transparent;
+      border-left: 10px solid var(--theme-on-bg);
+      border-top: 5px solid transparent;
+      right: -3px;
+      bottom: -5px;
+    }
+  }
+}
