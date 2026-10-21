@@ -1,10 +1,10 @@
 <script setup lang="ts">
-    import TechTree from '@/components/popups/TechTree.vue';
+    import TechTreeNetwork from '@/components/popups/TechTreeNetwork.vue';
 
 </script>
 
 <template>
     <div>
-        <TechTree />
+        <TechTreeNetwork />
     </div>
 </template>

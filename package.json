@@ -12,10 +12,10 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.3.1",
-    "@types/dagre-d3": "^0.6.6",
     "graphology": "^0.26.0",
     "pinia": "^4.0.2",
     "sigma": "^4.0.3",
+    "vis-network": "^10.1.2",
     "vue": "^3.5.40",
     "vue-router": "^5.2.0"
   },
