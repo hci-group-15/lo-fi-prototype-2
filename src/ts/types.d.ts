@@ -1,12 +1,7 @@
-export interface Folder {
-    'name': string;
-    'items': number;
-    'modified': Date;
-}
-
-
 export interface Topic {
     'name': string;
+    'id': string;
+    'modified': Date;
     /**
      * The completion in [0, 1]
      */

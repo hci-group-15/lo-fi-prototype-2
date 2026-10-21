@@ -9,7 +9,7 @@
 </script>
 
 <template>
-    <div class="home-positioner">
+    <div class="chat-positioner">
         <AssetManagerPopup v-model="showAssetManger" />
         <BranchTree v-model="showBranchView" />
         <div class="sidepanel-wrapper">
@@ -32,5 +32,5 @@
 </template>
 
 <style lang="scss" scoped>
-    @use "@/scss/home/main.scss";
+    @use "@/scss/pages/home.scss";
 </style>

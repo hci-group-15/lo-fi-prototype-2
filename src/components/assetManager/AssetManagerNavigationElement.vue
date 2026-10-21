@@ -1,10 +1,11 @@
 <script setup lang="ts">
     import type {
-        Folder
+        Topic
     } from '@/ts/types';
 
+
     const props = defineProps<{
-        'folder': Folder
+        'folder': Topic
     }>();
 </script>
 
@@ -15,7 +16,7 @@
         <div>
             <p>{{ props.folder.modified.toDateString() }}</p>
             <p class="last">
-                {{ props.folder.items }}
+                {{ props.folder.topics.length }}
             </p>
         </div>
     </div>

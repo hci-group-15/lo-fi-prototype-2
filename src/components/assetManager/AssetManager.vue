@@ -5,40 +5,54 @@
     } from 'vue';
     import AssetManagerNavigationElement from './AssetManagerNavigationElement.vue';
     import type {
-        Folder
+        Topic
     } from '@/ts/types';
 
     const folderPath: Ref<string[]> = ref( [
         '/',
         'Subject'
     ] );
-    const availableFolders: Ref<Folder[]> = ref( [
+    const availableFolders: Ref<Topic[]> = ref( [
         {
             'name': 'Subject 1',
-            'items': 10,
-            'modified': new Date()
+            'id': 'subject1',
+            'modified': new Date(),
+            'completion': 0,
+            'topics': []
         },
         {
             'name': 'Subject 2',
-            'items': 20,
-            'modified': new Date()
+            'id': 'subject2',
+            'completion': 0,
+            'modified': new Date(),
+            'topics': []
         }
     ] );
 
     const handleSelected = ( idx: number ) => {
         // Use event listener to listen to selection
-        console.log( 'Selected', idx );
+        const id = availableFolders.value[ idx ]!.id;
+
+        if ( props.emitSelectionEvent ) {
+            document.dispatchEvent( new CustomEvent( 'hci:select-subject', {
+                'detail': id
+            } ) );
+        }
+
+        if ( props.selectionCallback )
+            props.selectionCallback( id );
     };
 
     const props = defineProps<{
         'itemsPerLine'?: number,
         'showPath'?: boolean,
+        'emitSelectionEvent'?: boolean,
+        'selectionCallback'?: ( id: string ) => void
     }>();
 </script>
 
 <template>
     <div class="asset-manager">
-        <h2>Asset Manager</h2>
         <p v-if="props.showPath">
             <!-- Renders the "/ > Subject > ..." -->
             <span v-for="(f, index) in folderPath" :key="index">{{ f }} > </span> ...

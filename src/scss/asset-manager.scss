@@ -23,7 +23,8 @@
     height: 40%; // FIXME: Font sizing
 
     >div {
-      background: var(--theme-surface);
+      background: var(--theme-app);
+      cursor: pointer;
       height: 100%;
       display: flex;
       align-items: center;
