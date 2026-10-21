@@ -36,5 +36,30 @@
         border: none;
       }
     }
+
+    >.chat-messages-wrapper {
+      width: 100%;
+      position: absolute;
+      top: 20px;
+
+      >.chat-messages-bot {
+        width: calc(100% - 600px);
+        margin-left: 30px;
+        padding: 10px;
+        font-size: 1.2rem;
+        background-color: var(--theme-app);
+        border-radius: 20px;
+        float: left;
+      }
+      >.chat-messages-human {
+        width: calc(100% - 600px);
+        margin-right: 30px;
+        padding: 10px;
+        font-size: 1.2rem;
+        background-color: var(--theme-app);
+        border-radius: 20px;
+        float: right;
+      }
+    }
   }
 }
