@@ -32,5 +32,5 @@
 </template>
 
 <style lang="scss" scoped>
-    @use "@/scss/pages/home.scss";
+    @use "@/scss/pages/chat.scss";
 </style>
