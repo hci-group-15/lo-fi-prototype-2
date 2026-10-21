@@ -13,6 +13,8 @@ Learning Vue:
 
 
 ### Development
+**IMPORTANT**: The main branch is write-protected, so you can only have changes merged via PR.
+
 There are two ways of installing things, one is directly on your system (install `node.js`), or by running the docker container I created for you.
 Below a guide for using the container.
 
