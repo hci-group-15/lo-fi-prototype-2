@@ -3,7 +3,9 @@
     import router from '@/router';
 
     const toChat = ( id?: string ) => {
-        router.push( '/chat' + ( id ? `?id=${ id }` : '' ) );
+        // NOTE: The ids are uuids for subject and will in the future be for the chat id.
+        // Setting chat to -1 will (eventually, in the final prototype) fetch the most recent chat of a subject
+        router.push( '/chat' + ( id ? `?subject=${ id }&chat=-1&branch=-1` : '' ) );
     };
 </script>
 

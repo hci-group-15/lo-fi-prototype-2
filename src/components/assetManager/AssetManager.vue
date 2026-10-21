@@ -15,14 +15,14 @@
     const availableFolders: Ref<Topic[]> = ref( [
         {
             'name': 'Subject 1',
-            'id': 'subject1',
+            'id': '31cbfd24-a2a6-4b84-b6d8-571798925ac9',
             'modified': new Date(),
             'completion': 0,
             'topics': []
         },
         {
             'name': 'Subject 2',
-            'id': 'subject2',
+            'id': '8df639ac-be4d-4083-81de-6779b0dcc0e1',
             'completion': 0,
             'modified': new Date(),
             'topics': []
