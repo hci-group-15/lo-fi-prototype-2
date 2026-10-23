@@ -20,6 +20,14 @@ const router = createRouter( {
             'meta': {
                 'title': 'Chat'
             }
+        },
+        {
+            'path': '/experiment',
+            'name': 'experiment',
+            'component': () => import( '@/views/TestView.vue' ),
+            'meta': {
+                'title': 'Experiment'
+            }
         }
     ]
 } );
