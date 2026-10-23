@@ -1,5 +1,6 @@
 <script setup lang="ts">
     import PopupElement from '../PopupElement.vue';
+    import TreeRenderer from './TreeRenderer.vue';
 
     const show = defineModel<boolean>( {
         'required': true
@@ -8,8 +9,9 @@
 
 <template>
     <PopupElement v-model="show" :show-close="true">
-        <h2>A popup</h2>
-        <p>This is a basic popup</p>
-        <p>See the AssetManager for a more elaborate setup</p>
+        <div class="branch-tree">
+            <h2>Branches</h2>
+            <TreeRenderer prefix="branches" />
+        </div>
     </PopupElement>
 </template>

@@ -10,7 +10,6 @@
     import type {
         Topic
     } from '@/ts/types';
-    import TreeRenderer from './TreeRenderer.vue';
     import {
         gradientCols
     } from '@/ts/theme';
@@ -93,8 +92,6 @@
                 >
                     {{ topic.name }}
                 </p>
-                <!-- Render any extra topics in top-down tree graph -->
-                <TreeRenderer :topics="topic.topics" />
             </div>
         </div>
     </div>
