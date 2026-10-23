@@ -64,7 +64,7 @@
         ]
     } );
     const containerCentreHorizontal = ref( window.innerWidth / 2 );
-    const nodeHeight = 30; // This will remain a fixed value in high-fidelity prototype (but computed from the first node automatically)
+    const nodeHeight = 35; // This will remain a fixed value in high-fidelity prototype (but computed from the first node automatically)
     const nodeWidth = 200; // in high fidelity prototype, this will be computed automatically ofc
     const topOffset = 50; // This could also be controller automatically in the future
 
