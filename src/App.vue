@@ -1,52 +1,105 @@
 <script setup lang="ts">
-    import { ref } from 'vue';
-import MainView from './views/MainView.vue';
+    import {
+        darkMode,
+        selectedTheme,
+        themes
+    } from './ts/theme';
+    import SwitchOption from './components/SwitchOption.vue';
+    import {
+        ref
+    } from 'vue';
 
-    const names = ["one", "two"]
-    let name2: string = ""
+    const changeTheme = () => {
+        showThemePanel.value = !showThemePanel.value;
+    };
 
-    const func = ( param: Map<string, string> ) => {}
-
-    interface MyInterface {
-        funct: ( param: Map<string, string> ) => void
-    }
-
-    const obj: MyInterface = {
-        "funct": func
-    }
-
-    const clicked = ref( false );
+    const showThemePanel = ref( false );
 </script>
 
 <template>
-    <div class="grid">
-        <div class="side">
-            <p>Subject</p>
+    <main>
+        <i
+            id="theme-selector"
+            class="fa-solid fa-moon"
+            title="Toggle between light and dark mode"
+            @click="changeTheme();"
+        >
+        </i>
+        <div
+            id="theme-selection-panel"
+            :class="showThemePanel ? 'shown' : undefined"
+        >
+            <h3>Themes</h3>
+            <select v-model="selectedTheme">
+                <option v-for="(val, index) in themes" :key="index" :value="val">
+                    {{ val }}
+                </option>
+            </select>
+            <SwitchOption v-model="darkMode" text="Dark mode" />
         </div>
-        <div class="main">
-            <p>chat</p>
-        </div>
-    </div>
-    <i class="fa-solid fa-circle"></i>
-    <MainView :test="clicked" v-model="clicked"></MainView>
-    <div class="my-class">
-        <p @click="() => func">Integration</p>
-        <div v-for="(item, index) in names" :key="index">
-            <p v-if="item === 'one'">Hello World</p>
-            {{ item }}
-        </div>
-        <div :class="[ clicked ? 'test' : undefined ]">
-            <p>Line Integral</p>
-            <p>Riemann Integral</p>
-        </div>
-    </div>
-    <h1 id="title">You did it!</h1>
-    <p>
-        Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-        documentation
-    </p>
+        <router-view v-slot="{ Component, route }">
+            <transition :name="route.meta.transition ? String( route.meta.transition ) : 'fade'" mode="out-in">
+                <component :is="Component" />
+            </transition>
+        </router-view>
+    </main>
 </template>
 
 <style lang="scss">
-    @use "@/scss/main.scss";
+@include gen-theme('.theme-red-dark', $theme-red-dark);
+@include gen-theme('.theme-red-light', $theme-red-light);
+@include gen-theme('.theme-blue-dark', $theme-blue-dark);
+@include gen-theme('.theme-blue-light', $theme-blue-light);
+@include gen-theme('.theme-purple-dark', $theme-purple-dark);
+@include gen-theme('.theme-purple-light', $theme-purple-light);
+@include gen-theme('.theme-monochrome-light', $theme-monochrome-light);
+@include gen-theme('.theme-monochrome-dark', $theme-monochrome-dark);
+
+#main {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#theme-selector {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 1rem;
+    z-index: 100;
+    cursor: pointer;
+}
+
+#theme-selection-panel {
+    position: fixed;
+    z-index: 100;
+    top: calc(5px + 2rem);
+    left: -230px;
+    width: 180px;
+    height: 200px;
+    padding: 20px;
+    background-color: var(--theme-primary);
+    color: var(--theme-on-primary);
+    border: solid 1px var(--theme-on-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 20px;
+    transition: left 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    &.shown {
+        left: 5px;
+    }
+
+    >select {
+        width: 100%;
+        margin-bottom: 10px;
+        color: var(--theme-on-primary);
+        border-color: var(--theme-on-primary);
+        background-color: var(--theme-primary);
+    }
+}
 </style>

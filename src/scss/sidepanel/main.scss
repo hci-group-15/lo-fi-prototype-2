@@ -1,0 +1,101 @@
+.side-panel {
+  background: var(--theme-app);
+  color: var(--theme-on-app);
+  height: 95%;
+  width: 90%;
+  padding: 10px;
+  border-radius: 10px;
+
+  #asset-manager {
+    margin-left: auto;
+  }
+
+  .subject {
+    width: 100%;
+    height: fit-content;
+    position: relative;
+
+    >p {
+      font-size: 1.2rem;
+      margin: 0;
+      width: max-content;
+      border: solid 1px var(--theme-on-app);
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    >span {
+      border-left: 1px solid black;
+      height: calc(100% - 1.5rem - 45px); // TODO: size properly
+      left: 10px;
+      top: calc(1.5rem + 35px);
+      display: block;
+      width: 0;
+      position: absolute;
+    }
+
+    >.topic {
+      margin-left: 30px;
+      position: relative;
+      height: max-content;
+      cursor: pointer;
+      width: max-content;
+      margin-top: 5px;
+
+      &>p,
+      .topic>p,
+      .tree-element>p {
+        padding: 10px;
+        border-radius: 20px;
+      }
+
+      &::before {
+        content: " ";
+        border-bottom: solid 1px black;
+        height: 0;
+        width: 15px;
+        right: calc(100% + 5px);
+        display: block;
+        position: absolute;
+        top: 50%;
+      }
+
+      >p {
+        margin: 0;
+      }
+
+      >.tree-container {
+        position: absolute;
+        top: 0;
+        left: calc(100% + 5px);
+        background-color: var(--theme-app);
+        width: max-content;
+        display: none;
+
+        >.tree-element {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          >p {
+            margin: 0;
+            margin-left: 5px;
+            position: relative;
+          }
+
+          >.tree-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+
+      &:hover {
+        >.tree-container {
+          display: block;
+        }
+      }
+    }
+  }
+}

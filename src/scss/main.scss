@@ -1,42 +1,25 @@
-:root {
-  --fg-col: #000000
-}
+@forward '@/scss/theme.scss';
 
-body {
+// Configure main window and body to remove margins
+body,
+window {
   font-family: sans-serif;
-}
-
-#title {
-  font-style: italic;
-  margin-left: auto;
-  margin-right: auto;
-  width: min-content;
-}
-
-.grid {
-  display: grid;
-  grid-template:
-    "side main main"
-    "side main main";
-
-  >.side {
-    grid-area: "side";
-  }
-
-  >.main {
-    grid-area: "main";
-  }
-}
-
-.my-class {
-  display: flex;
-  justify-content: center;
   width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--theme-bg);
+  color: var(--theme-on-bg);
+}
 
-  >p {
-    padding: 50px;
-    border-radius: 50px;
-    border: solid 1px var(--fg-col);
-    background: linear-gradient(90deg, #00ff00 30%, #ffffff 50%);
-  }
+// Global button config (can be overridden for each button, as needed)
+button {
+  background: var(--theme-primary);
+  color: var(--theme-on-primary);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: block;
 }
