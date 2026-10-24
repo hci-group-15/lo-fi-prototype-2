@@ -1,6 +1,10 @@
 <script setup lang="ts">
     import AssetManager from '@/components/assetManager/AssetManager.vue';
+    import FlashCards from '@/components/flashcards/FlashCards.vue';
     import router from '@/router';
+    import {
+        showFlashCardView
+    } from '@/ts/state';
 
     const toChat = ( id?: string ) => {
         // NOTE: The ids are uuids for subject and will in the future be for the chat id.
@@ -11,7 +15,16 @@
 
 <template>
     <div class="home-positioner">
-        <h1>Lo-Fi Prototype</h1>
+        <FlashCards v-model="showFlashCardView" />
+        <h1>My Subjects</h1>
         <AssetManager :items-per-line="7" :emit-selection-event="true" :selection-callback="toChat" />
     </div>
 </template>
+
+<style lang="scss" scoped>
+.home-positioner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+</style>
