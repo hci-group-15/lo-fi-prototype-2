@@ -1,4 +1,5 @@
 .side-panel {
+  position: relative;
   display: flex;
   background: var(--theme-app);
   color: var(--theme-on-app);
@@ -20,14 +21,30 @@
 
   .sidepanel-content {
     box-sizing: border-box;
-    flex: 0 0 296px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
     overflow: auto;
     padding: 12px;
   }
 
+  .sidepanel-resize-handle {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: -4px;
+    bottom: 0;
+    width: 8px;
+    cursor: col-resize;
+    touch-action: none;
+  }
+
   .sidepanel-close {
-    display: block;
-    margin-left: auto;
+    align-self: flex-end;
+    flex: 0 0 auto;
+    width: auto;
+    margin: 0 0 12px auto;
   }
 
   .subject {

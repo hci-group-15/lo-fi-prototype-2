@@ -7,6 +7,9 @@
     const activePanel = defineModel<SidePanelView>( {
         'required': true
     } );
+    const emit = defineEmits<{
+        resize: [ delta: number ]
+    }>();
 
     const togglePanel = ( panel: Exclude<SidePanelView, null> ) => {
         activePanel.value = activePanel.value === panel ? null : panel;
@@ -14,6 +17,35 @@
 
     const backToOverview = () => {
         router.push( '/' );
+    };
+
+    let lastPointerX = 0;
+    let isResizing = false;
+
+    const startResize = ( event: PointerEvent ) => {
+        if ( event.button !== 0 )
+            return;
+
+        lastPointerX = event.clientX;
+        isResizing = true;
+
+        if ( event.currentTarget instanceof HTMLElement )
+            event.currentTarget.setPointerCapture( event.pointerId );
+    };
+
+    const resize = ( event: PointerEvent ) => {
+        if ( !isResizing )
+            return;
+
+        const delta = event.clientX - lastPointerX;
+        lastPointerX = event.clientX;
+
+        if ( delta !== 0 )
+            emit( 'resize', delta );
+    };
+
+    const stopResize = () => {
+        isResizing = false;
     };
 </script>
 
@@ -59,6 +91,18 @@
                 <TreeRenderer prefix="branches" />
             </template>
         </aside>
+        <div
+            v-if="activePanel"
+            class="sidepanel-resize-handle"
+            role="separator"
+            aria-orientation="vertical"
+            aria-label="Resize sidepanel"
+            @pointerdown="startResize"
+            @pointermove="resize"
+            @pointerup="stopResize"
+            @pointercancel="stopResize"
+            @lostpointercapture="stopResize"
+        ></div>
     </div>
 </template>
 

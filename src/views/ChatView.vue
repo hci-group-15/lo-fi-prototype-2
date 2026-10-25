@@ -3,15 +3,26 @@
     import SidePanel from '@/components/SidePanel.vue';
     type SidePanelView = 'assets' | 'branches' | null;
     const activeSidePanel = ref<SidePanelView>( null );
+    const sidePanelWidth = ref( 250 );
+    const minSidePanelWidth = 220;
+    const maxSidePanelWidth = 600;
+
+    const resizeSidePanel = ( delta: number ) => {
+        sidePanelWidth.value = Math.min(
+            maxSidePanelWidth,
+            Math.max( minSidePanelWidth, sidePanelWidth.value + delta )
+        );
+    };
 </script>
 
 <template>
     <div
         class="chat-positioner"
         :class="{ 'sidepanel-open': activeSidePanel !== null }"
+        :style="{ '--sidepanel-width': `${sidePanelWidth}px` }"
     >
         <div class="sidepanel-wrapper">
-            <SidePanel v-model="activeSidePanel" />
+            <SidePanel v-model="activeSidePanel" @resize="resizeSidePanel" />
         </div>
         <div class="main-wrapper">
             <div class="chat-messages-wrapper">
