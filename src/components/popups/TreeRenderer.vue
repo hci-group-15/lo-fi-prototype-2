@@ -12,32 +12,39 @@
     const props = defineProps<{
         'prefix': string
     }>();
+    const currentTopicName = 'Topic 3';
+    // let's highlight the current topic in a different colour to help navigation
     const techTree: Ref<TechTree> = ref( {
         'nodes': [
             {
                 'name': 'Topic 0',
                 'x': 0,
-                'y': 0
+                'y': 0,
+                'completed': true
             },
             {
                 'name': 'Topic 1',
                 'x': -150,
-                'y': 50
+                'y': 50,
+                'completed': true
             },
             {
                 'name': 'Topic 2',
                 'x': 150,
-                'y': 50
+                'y': 50,
+                'completed': false
             },
             {
                 'name': 'Topic 3',
                 'x': 0,
-                'y': 100
+                'y': 100,
+                'completed': false
             },
             {
                 'name': 'Topic 4',
                 'x': -300,
-                'y': 100
+                'y': 100,
+                'completed': true
             }
         ],
         'edges': [
@@ -103,7 +110,11 @@
             :id="props.prefix + '-node-' + idx"
             :key="idx"
             :style="`top: ${node.y + topOffset}px; left: ${node.x + containerCentreHorizontal - (nodeWidth / 2)}px;
-            width: ${nodeWidth}px; height: ${nodeHeight}`"
+            width: ${nodeWidth}px; height: ${nodeHeight}px`"
+            :class="{
+                'current-topic': node.name === currentTopicName,
+                'completed': node.completed
+            }"
             class="tree-node"
         >
             {{ node.name }}

@@ -9,6 +9,25 @@
     text-align: center;
   }
 
+  >.tree-node {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--theme-on-bg);
+    border-radius: 5px;
+  }
+
+  >.tree-node.completed {
+    background-color: #4caf50;
+    color: #102a12;
+  }
+
+  >.tree-node.current-topic {
+    color: #3c00ff;
+    font-weight: 700;
+  }
+
   >.tree-edge {
     border-bottom: 2px solid var(--theme-on-bg);
 
