@@ -4,6 +4,7 @@
         selectedTheme,
         themes
     } from './ts/theme';
+    import SearchView from './components/SearchView.vue';
     import SwitchOption from './components/SwitchOption.vue';
     import {
         ref
@@ -18,6 +19,7 @@
 
 <template>
     <main>
+        <SearchView />
         <i
             id="theme-selector"
             class="fa-solid fa-moon"
