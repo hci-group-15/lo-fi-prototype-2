@@ -24,7 +24,7 @@
   }
 
   >.tree-node.current-topic {
-    color: #3c00ff;
+    color: var(--theme-primary);
     font-weight: 700;
   }
 
