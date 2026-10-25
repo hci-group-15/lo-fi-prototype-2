@@ -1,12 +1,32 @@
 .side-panel {
+  display: flex;
   background: var(--theme-app);
   color: var(--theme-on-app);
-  height: 95%;
-  width: 90%;
-  padding: 10px;
-  border-radius: 10px;
+  height: 100%;
+  width: 100%;
 
-  #asset-manager {
+  .sidepanel-rail {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 0 64px;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 6px;
+  }
+
+  .sidepanel-nav-button {
+    width: 100%;
+  }
+
+  .sidepanel-content {
+    box-sizing: border-box;
+    flex: 0 0 296px;
+    overflow: auto;
+    padding: 12px;
+  }
+
+  .sidepanel-close {
+    display: block;
     margin-left: auto;
   }
 
