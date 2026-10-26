@@ -6,6 +6,10 @@
     const props = defineProps<{
         'message': ChatMessagePair
     }>();
+
+    const openAddBranchPopup = () => {
+        document.dispatchEvent( new CustomEvent( 'branch:add:start' ) );
+    };
 </script>
 
 <template>
@@ -16,7 +20,7 @@
             </p>
             <div class="chat-messages-bot">
                 <p>{{ props.message.response }}</p>
-                <i class="fa-solid fa-code-branch" title="Create new branch here"></i>
+                <i class="fa-solid fa-code-branch" title="Create new branch here" @click="openAddBranchPopup"></i>
             </div>
         </div>
         <div v-if="props.message.branches && props.message.branches.length > 0" class="chat-branching-indicator">

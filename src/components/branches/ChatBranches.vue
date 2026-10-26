@@ -1,9 +1,9 @@
 <script setup lang="ts">
-    import PopupElement from './PopupElement.vue';
+    import PopupElement from '../PopupElement.vue';
     import type {
         TechTree
     } from '@/ts/techtree';
-    import TreeRenderer from './popups/TreeRenderer.vue';
+    import TreeRenderer from '../popups/TreeRenderer.vue';
 
     const branchesGraph: TechTree = {
         'edges': [],

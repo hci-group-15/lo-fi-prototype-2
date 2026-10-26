@@ -1,13 +1,16 @@
 <script setup lang="ts">
     import {
         type Ref,
+        onMounted,
+        onUnmounted,
         ref
     } from 'vue';
-    import ChatBranches from '@/components/ChatBranches.vue';
+    import ChatAddBranch from '@/components/branches/ChatAddBranch.vue';
+    import ChatBranches from '@/components/branches/ChatBranches.vue';
     import type {
         ChatMessagePair
     } from '@/ts/types';
-    import ChatRenderer from '@/components/ChatRenderer.vue';
+    import ChatRenderer from '@/components/branches/ChatRenderer.vue';
     import SidePanel from '@/components/SidePanel.vue';
     import {
         showChatBranches
@@ -17,6 +20,11 @@
     const sidePanelWidth = ref( 250 );
     const minSidePanelWidth = 220;
     const maxSidePanelWidth = 600;
+    const showAddBranch = ref( false );
+
+    const openAddBranchPopup = () => {
+        showAddBranch.value = true;
+    };
 
     const showBranches = () => {
         showChatBranches.value = true;
@@ -45,6 +53,16 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             }
         }
     );
+
+    onMounted( () => {
+        document.addEventListener( 'branch:add:start', openAddBranchPopup );
+    } );
+
+    onUnmounted( () => {
+        try {
+            document.removeEventListener( 'branch:add:start', openAddBranchPopup );
+        } catch { /* empty */ }
+    } );
 </script>
 
 <template>
@@ -54,6 +72,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
         :style="{ '--sidepanel-width': `${sidePanelWidth}px` }"
     >
         <ChatBranches v-model="showChatBranches" />
+        <ChatAddBranch v-model="showAddBranch" />
         <div class="sidepanel-wrapper">
             <SidePanel v-model="activeSidePanel" @resize="resizeSidePanel" />
         </div>
