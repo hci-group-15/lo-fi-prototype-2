@@ -3,6 +3,7 @@
         type Ref,
         computed,
         onMounted,
+        onUnmounted,
         ref
     } from 'vue';
     import type {
@@ -10,79 +11,34 @@
     } from '@/ts/techtree';
 
     const props = defineProps<{
-        'prefix': string
+        'prefix': string,
+        'techTree': TechTree,
+        'nodeClickAction'?: ( id: number ) => void
     }>();
     const currentTopicName = 'Topic 3';
     // let's highlight the current topic in a different colour to help navigation
-    const techTree: Ref<TechTree> = ref( {
-        'nodes': [
-            {
-                'name': 'Topic 0',
-                'x': 0,
-                'y': 0,
-                'completed': true
-            },
-            {
-                'name': 'Topic 1',
-                'x': -150,
-                'y': 50,
-                'completed': true
-            },
-            {
-                'name': 'Topic 2',
-                'x': 150,
-                'y': 50,
-                'completed': false
-            },
-            {
-                'name': 'Topic 3',
-                'x': 0,
-                'y': 100,
-                'completed': false
-            },
-            {
-                'name': 'Topic 4',
-                'x': -300,
-                'y': 100,
-                'completed': true
-            }
-        ],
-        'edges': [
-            {
-                'from': 0,
-                'to': 1
-            },
-            {
-                'from': 0,
-                'to': 2
-            },
-            {
-                'from': 2,
-                'to': 3
-            },
-            {
-                'from': 1,
-                'to': 3
-            },
-            {
-                'from': 1,
-                'to': 4
-            }
-        ]
-    } );
     const containerCentreHorizontal = ref( window.innerWidth / 2 );
     const nodeHeight = 35; // This will remain a fixed value in high-fidelity prototype (but computed from the first node automatically)
     const nodeWidth = 200; // in high fidelity prototype, this will be computed automatically ofc
     const topOffset = 50; // This could also be controller automatically in the future
 
-    onMounted( () => {
+    const computeSizing = () => {
         containerCentreHorizontal.value = document.getElementById( props.prefix )!.getBoundingClientRect().width / 2;
+    };
+
+    onMounted( () => {
+        computeSizing();
+        document.addEventListener( 'tree:redraw', computeSizing );
+    } );
+
+    onUnmounted( () => {
+        document.removeEventListener( 'tree:redraw', computeSizing );
     } );
 
     const edgeStyle = computed( () => {
         return ( idx: number ) => {
-            const node1 = techTree.value.nodes[techTree.value.edges[idx]!.from]!;
-            const node2 = techTree.value.nodes[techTree.value.edges[idx]!.to]!;
+            const node1 = props.techTree.nodes[props.techTree.edges[idx]!.from]!;
+            const node2 = props.techTree.nodes[props.techTree.edges[idx]!.to]!;
             const x = node1.x + containerCentreHorizontal.value;
             const y = nodeHeight + node1.y + topOffset;
             const x2 = node2.x + containerCentreHorizontal.value;
@@ -116,6 +72,7 @@
                 'completed': node.completed
             }"
             class="tree-node"
+            @click="() => props.nodeClickAction ? props.nodeClickAction( idx ) : undefined"
         >
             {{ node.name }}
         </div>

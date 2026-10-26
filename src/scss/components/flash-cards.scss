@@ -1,0 +1,48 @@
+.flash-cards-content {
+  width: 80vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .question {
+    position: relative;
+    font-size: 2rem;
+    max-width: 80%;
+
+    &::before,
+    &::after {
+      content: '?';
+      position: absolute;
+      right: 102%;
+      bottom: calc(50% - 25px);
+      font-size: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      width: 50px;
+      background-color: orange;
+      border-radius: 25px;
+    }
+
+    &::after {
+      left: 102%;
+    }
+  }
+
+  >textarea {
+    background-color: var(--theme-app);
+    color: var(--theme-on-app);
+    border: solid 1px var(--theme-on-app);
+    border-radius: 10px;
+    padding: 10px;
+    width: 80%;
+    height: 30%;
+    font-size: 1rem;
+    resize: vertical;
+    margin-bottom: 10px;
+    ;
+  }
+}
