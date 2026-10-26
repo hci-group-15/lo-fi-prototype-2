@@ -1,99 +1,167 @@
 <script setup lang="ts">
     import {
-        type Ref,
-        ref
+        type Ref, ref
     } from 'vue';
-    import {
-        showAssetManger,
-        showBranchView
-    } from '@/ts/state';
+    import AssetManager from '@/components/assetManager/AssetManager.vue';
     import type {
-        Topic
-    } from '@/ts/types';
-    import {
-        gradientCols
-    } from '@/ts/theme';
+        TechTree
+    } from '@/ts/techtree';
+    import TreeRenderer from '@/components/popups/TreeRenderer.vue';
     import router from '@/router';
 
-    const openAssetManager = () => {
-        showAssetManger.value = true;
-    };
+    type SidePanelView = 'assets' | 'branches' | null;
+    const activePanel = defineModel<SidePanelView>( {
+        'required': true
+    } );
+    const emit = defineEmits<{
+        'resize': [ delta: number ]
+    }>();
 
-    const openBranchView = () => {
-        showBranchView.value = true;
+    const togglePanel = ( panel: Exclude<SidePanelView, null> ) => {
+        activePanel.value = activePanel.value === panel ? null : panel;
     };
 
     const backToOverview = () => {
         router.push( '/' );
     };
 
-    // Define subjects to render
-    const subjects: Ref<Topic[]> = ref( [ {
-        'name': 'Analysis',
-        'completion': 0.5,
-        'id': 'ea6db2d2-7ce0-4874-a3e9-c875aa0d3e21',
-        'modified': new Date(),
-        'topics': [
+    let lastPointerX = 0;
+    let isResizing = false;
+
+    const startResize = ( event: PointerEvent ) => {
+        if ( event.button !== 0 )
+            return;
+
+        lastPointerX = event.clientX;
+        isResizing = true;
+
+        if ( event.currentTarget instanceof HTMLElement )
+            event.currentTarget.setPointerCapture( event.pointerId );
+    };
+
+    const resize = ( event: PointerEvent ) => {
+        if ( !isResizing )
+            return;
+
+        const delta = event.clientX - lastPointerX;
+
+        lastPointerX = event.clientX;
+
+        if ( delta !== 0 )
+            emit( 'resize', delta );
+    };
+
+    const stopResize = () => {
+        isResizing = false;
+    };
+
+    const techTree: Ref<TechTree> = ref( {
+        'nodes': [
             {
-                'name': 'ODEs',
-                'completion': 1,
-                'id': '6847829b-a76a-4108-bd72-d884d53231a1',
-                'modified': new Date(),
-                'topics': []
+                'name': 'Topic 0',
+                'x': 0,
+                'y': 0
             },
             {
-                'name': 'Differentiation',
-                'completion': 1,
-                'id': 'ffd0d1e2-d786-4a35-aae1-27ebc4846e48',
-                'modified': new Date(),
-                'topics': []
+                'name': 'Topic 1',
+                'x': -150,
+                'y': 50
             },
             {
-                'name': 'Integration',
-                'completion': 0.5,
-                'id': 'uuid',
-                'modified': new Date(),
-                'topics': [ {
-                    'name': 'Line Integral',
-                    'completion': 0.7,
-                    'id': '08952403-459f-47c5-9896-7a09a2e771a6',
-                    'modified': new Date(),
-                    'topics': []
-                } ]
+                'name': 'Topic 2',
+                'x': 150,
+                'y': 50
+            },
+            {
+                'name': 'Topic 3',
+                'x': 0,
+                'y': 100
+            },
+            {
+                'name': 'Topic 4',
+                'x': -300,
+                'y': 100
+            }
+        ],
+        'edges': [
+            {
+                'from': 0,
+                'to': 1
+            },
+            {
+                'from': 0,
+                'to': 2
+            },
+            {
+                'from': 2,
+                'to': 3
+            },
+            {
+                'from': 1,
+                'to': 3
+            },
+            {
+                'from': 1,
+                'to': 4
             }
         ]
-    } ] );
+    } );
 </script>
 
 <template>
     <div class="side-panel">
-        <button id="asset-manager" @click="backToOverview">
-            <i class="fa-solid fa-arrow-left"></i>
-        </button>
-        <button id="asset-manager" @click="openAssetManager">
-            <i class="fa-solid fa-file-pen"></i>
-        </button>
-        <button id="asset-manager" @click="openBranchView">
-            <i class="fa-solid fa-code-branch"></i>
-        </button>
-        <div v-for="(subject, subjectIdx) in subjects" :key="subjectIdx" class="subject">
-            <p
-                :style="`background: linear-gradient(90deg, ${gradientCols.start} ${subject.completion * 100}%,
-                ${gradientCols.end} ${Math.max(subject.completion * 100 + 10, 100)}%);`"
+        <nav class="sidepanel-rail" aria-label="Sidebar">
+            <button
+                class="sidepanel-nav-button"
+                aria-label="Back to overview"
+                @click="backToOverview"
             >
-                {{ subject.name }}
-            </p>
-            <span></span>
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button
+                class="sidepanel-nav-button"
+                aria-label="Asset manager"
+                :aria-pressed="activePanel === 'assets'"
+                @click="togglePanel('assets')"
+            >
+                <i class="fa-solid fa-file-pen"></i>
+            </button>
+            <button
+                class="sidepanel-nav-button"
+                aria-label="Branches"
+                :aria-pressed="activePanel === 'branches'"
+                @click="togglePanel('branches')"
+            >
+                <i class="fa-solid fa-code-branch"></i>
+            </button>
+        </nav>
 
-            <div v-for="(topic, topicIdx) in subject.topics" :key="topicIdx" class="topic">
-                <p
-                    :style="`background: linear-gradient(90deg, ${gradientCols.start} ${topic.completion * 100}%,
-                    ${gradientCols.end} ${Math.max(topic.completion * 100 + 10, 100)}%);`"
-                >
-                    {{ topic.name }}
-                </p>
-            </div>
-        </div>
+        <aside v-if="activePanel" class="sidepanel-content">
+            <button
+                class="sidepanel-close"
+                aria-label="Close sidepanel"
+                @click="activePanel = null"
+            >
+                X
+            </button>
+            <AssetManager v-if="activePanel === 'assets'" />
+            <template v-else>
+                <h2>Branches</h2>
+                <TreeRenderer prefix="branches" :tech-tree="techTree" />
+            </template>
+        </aside>
+        <div
+            v-if="activePanel"
+            class="sidepanel-resize-handle"
+            role="separator"
+            aria-orientation="vertical"
+            aria-label="Resize sidepanel"
+            @pointerdown="startResize"
+            @pointermove="resize"
+            @pointerup="stopResize"
+            @pointercancel="stopResize"
+            @lostpointercapture="stopResize"
+        ></div>
     </div>
 </template>
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
     import {
+        type Ref,
         computed,
         onMounted,
         onUnmounted,
@@ -14,6 +15,8 @@
         'techTree': TechTree,
         'nodeClickAction'?: ( id: number ) => void
     }>();
+    const currentTopicName = 'Topic 3';
+    // let's highlight the current topic in a different colour to help navigation
     const containerCentreHorizontal = ref( window.innerWidth / 2 );
     const nodeHeight = 35; // This will remain a fixed value in high-fidelity prototype (but computed from the first node automatically)
     const nodeWidth = 200; // in high fidelity prototype, this will be computed automatically ofc
@@ -63,7 +66,11 @@
             :id="props.prefix + '-node-' + idx"
             :key="idx"
             :style="`top: ${node.y + topOffset}px; left: ${node.x + containerCentreHorizontal - (nodeWidth / 2)}px;
-            width: ${nodeWidth}px; height: ${nodeHeight}`"
+            width: ${nodeWidth}px; height: ${nodeHeight}px`"
+            :class="{
+                'current-topic': node.name === currentTopicName,
+                'completed': node.completed
+            }"
             class="tree-node"
             @click="() => props.nodeClickAction ? props.nodeClickAction( idx ) : undefined"
         >

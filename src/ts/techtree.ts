@@ -7,6 +7,7 @@ export interface Node {
     'name': string;
     'x': number;
     'y': number;
+    'completed'?: boolean;
 }
 
 export interface Edge {

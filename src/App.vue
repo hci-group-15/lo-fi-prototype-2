@@ -67,7 +67,7 @@
 #theme-selector {
     position: fixed;
     top: 10px;
-    left: 10px;
+    right: 10px;
     font-size: 1rem;
     z-index: 100;
     cursor: pointer;
@@ -77,7 +77,7 @@
     position: fixed;
     z-index: 100;
     top: calc(5px + 2rem);
-    left: -230px;
+    right: -230px;
     width: 180px;
     height: 200px;
     padding: 20px;
@@ -93,7 +93,7 @@
     transition: left 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     &.shown {
-        left: 5px;
+        right: 5px;
     }
 
     >select {

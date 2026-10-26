@@ -1,13 +1,50 @@
 .side-panel {
+  position: relative;
+  display: flex;
   background: var(--theme-app);
   color: var(--theme-on-app);
-  height: 95%;
-  width: 90%;
-  padding: 10px;
-  border-radius: 10px;
+  height: 100%;
+  width: 100%;
 
-  #asset-manager {
-    margin-left: auto;
+  .sidepanel-rail {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 0 64px;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 6px;
+  }
+
+  .sidepanel-nav-button {
+    width: 100%;
+  }
+
+  .sidepanel-content {
+    box-sizing: border-box;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: auto;
+    padding: 12px;
+  }
+
+  .sidepanel-resize-handle {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: -4px;
+    bottom: 0;
+    width: 8px;
+    cursor: col-resize;
+    touch-action: none;
+  }
+
+  .sidepanel-close {
+    align-self: flex-end;
+    flex: 0 0 auto;
+    width: auto;
+    margin: 0 0 12px auto;
   }
 
   .subject {

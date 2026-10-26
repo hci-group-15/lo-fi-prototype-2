@@ -1,3 +1,4 @@
+<!-- note to self: this is the old nested topic structure with colour gradients. The new tech tree is in popups -->
 <script setup lang="ts">
     import type {
         Topic
@@ -9,6 +10,7 @@
     const props = defineProps<{
         'topics': Topic[]
     }>();
+
 </script>
 
 <template>
