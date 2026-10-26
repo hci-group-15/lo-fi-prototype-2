@@ -8,6 +8,7 @@
     } from '@/ts/techtree';
     import TreeRenderer from '@/components/popups/TreeRenderer.vue';
     import router from '@/router';
+    import FlashCards from '@/components/flashcards/FlashCards.vue';
 
     type SidePanelView = 'assets' | 'branches' | null;
     const activePanel = defineModel<SidePanelView>( {
@@ -23,6 +24,12 @@
 
     const backToOverview = () => {
         router.push( '/' );
+    };
+
+    const showFlashcards = ref( false );
+
+    const openFlashcards = () => {
+        showFlashcards.value = true;
     };
 
     let lastPointerX = 0;
@@ -148,8 +155,17 @@
             <template v-else>
                 <h2>Branches</h2>
                 <TreeRenderer prefix="branches" :tech-tree="techTree" />
+                <button
+                    class="open-flashcards"
+                    @click="openFlashcards"
+                >
+                    Start review!
+                </button>
             </template>
         </aside>
+
+        <FlashCards v-model="showFlashcards" />
+
         <div
             v-if="activePanel"
             class="sidepanel-resize-handle"

@@ -9,6 +9,7 @@
     const minSidePanelWidth = 220;
     const maxSidePanelWidth = 600;
 
+    
     const resizeSidePanel = ( delta: number ) => {
         sidePanelWidth.value = Math.min(
             maxSidePanelWidth,

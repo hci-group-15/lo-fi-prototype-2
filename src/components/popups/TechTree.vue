@@ -9,10 +9,17 @@
         TechTree
     } from '@/ts/techtree';
     import TreeRenderer from './TreeRenderer.vue';
+    import FlashCards from '../flashcards/FlashCards.vue';
 
     const show = defineModel<boolean>( {
         'required': true
     } );
+
+    const showFlashcards = ref( false );
+
+    const openFlashcards = () => {
+        showFlashcards.value = true;
+    };
 
     watch( show, () => {
         if ( show.value )
@@ -78,8 +85,17 @@
         <div class="tech-tree">
             <h2>Tech Tree</h2>
             <TreeRenderer prefix="branches" :tech-tree="techTree" />
+            <button
+                class="open-flashcards"
+                @click="openFlashcards"
+            >
+                Start review!
+            </button>
         </div>
     </PopupElement>
+
+    <FlashCards v-model="showFlashcards" />
+    
 </template>
 
 <style lang="scss" scoped>
