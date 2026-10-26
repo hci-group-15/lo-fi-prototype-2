@@ -4,13 +4,66 @@
         TechTree
     } from '@/ts/techtree';
     import TreeRenderer from '../popups/TreeRenderer.vue';
+    import {
+        watch
+    } from 'vue';
 
     const branchesGraph: TechTree = {
-        'edges': [],
-        'nodes': []
+        'edges': [
+            {
+                'from': 0,
+                'to': 1
+            },
+            {
+                'from': 1,
+                'to': 2
+            },
+            {
+                'from': 1,
+                'to': 3
+            },
+            {
+                'from': 3,
+                'to': 4
+            }
+        ],
+        'nodes': [
+            {
+                'name': 'Start',
+                'x': 0,
+                'y': 0
+            },
+            {
+                'name': 'Intro',
+                'x': 0,
+                'y': 50
+            },
+            {
+                'name': 'Why?',
+                'x': 0,
+                'y': 100
+            },
+            {
+                'name': 'Tangent',
+                'x': -300,
+                'y': 100
+            },
+            {
+                'name': 'Continuation',
+                'x': -300,
+                'y': 150
+            }
+        ]
     };
     const show = defineModel<boolean>( {
         'required': true
+    } );
+
+    watch( show, () => {
+        if ( show.value )
+            setTimeout( () => {
+                document.dispatchEvent( new CustomEvent( 'tree:redraw' ) );
+            }, 200 );
     } );
 </script>
 
