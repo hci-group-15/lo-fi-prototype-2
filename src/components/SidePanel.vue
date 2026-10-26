@@ -9,8 +9,9 @@
     import TreeRenderer from '@/components/popups/TreeRenderer.vue';
     import router from '@/router';
     import FlashCards from '@/components/flashcards/FlashCards.vue';
+    import FlashCardsManager from './flashcards/FlashCardsManager.vue';
 
-    type SidePanelView = 'assets' | 'branches' | null;
+    type SidePanelView = 'assets' | 'branches' | 'flashcards-manager' | null;
     const activePanel = defineModel<SidePanelView>( {
         'required': true
     } );
@@ -141,6 +142,14 @@
             >
                 <i class="fa-solid fa-code-branch"></i>
             </button>
+            <button
+                class="sidepanel-nav-button"
+                aria-label="Flashcard manager"
+                :aria-pressed="activePanel === 'flashcards-manager'"
+                @click="togglePanel('flashcards-manager')"
+            >
+                <img class="sidepanel-icon" src="/flashcards2.svg" alt="">
+            </button>
         </nav>
 
         <aside v-if="activePanel" class="sidepanel-content">
@@ -152,7 +161,16 @@
                 X
             </button>
             <AssetManager v-if="activePanel === 'assets'" />
-            <template v-else>
+            <template v-else-if="activePanel === 'flashcards-manager'">
+                <FlashCardsManager />
+                <button
+                    class="open-flashcards"
+                    @click="openFlashcards"
+                >
+                    Start review!
+                </button>
+            </template>
+            <template v-else-if="activePanel === 'branches'">
                 <h2>Branches</h2>
                 <TreeRenderer prefix="branches" :tech-tree="techTree" />
                 <button

@@ -15,7 +15,7 @@
     import {
         showChatBranches
     } from '@/ts/state';
-    type SidePanelView = 'assets' | 'branches' | null;
+    type SidePanelView = 'assets' | 'branches' | 'flashcards-manager' | null;
     const activeSidePanel = ref<SidePanelView>( null );
     const sidePanelWidth = ref( 250 );
     const minSidePanelWidth = 220;

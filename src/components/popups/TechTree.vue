@@ -89,7 +89,7 @@
                 class="open-flashcards"
                 @click="openFlashcards"
             >
-                Start review!
+                Start review now!
             </button>
         </div>
     </PopupElement>
