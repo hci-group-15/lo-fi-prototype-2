@@ -26,6 +26,55 @@
             'completion': 0,
             'modified': new Date(),
             'topics': []
+        },
+        {
+            'name': 'Subject 3',
+            'id': '8df639ac-be4d-4083-81de-6779b0dcc0e2',
+            'completion': 0,
+            'modified': new Date(),
+            'topics': []
+        },
+        {
+            'name': 'Subject 3',
+            'id': '8df639ac-be4d-4083-81de-6779b0dcc0e3',
+            'completion': 0,
+            'modified': new Date(),
+            'topics': []
+        },
+        {
+            'name': 'Subject 4',
+            'id': '8df639ac-be4d-4083-81de-6779b0dcc0e4',
+            'completion': 0,
+            'modified': new Date(),
+            'topics': []
+        },
+        {
+            'name': 'Subject 5',
+            'id': '8df639ac-be4d-4083-81de-6779b0dcc0e5',
+            'completion': 0,
+            'modified': new Date(),
+            'topics': []
+        },
+        {
+            'name': 'Subject 6',
+            'id': '8df639ac-be4d-4083-81de-6779b0dcc0e6',
+            'completion': 0,
+            'modified': new Date(),
+            'topics': []
+        },
+        {
+            'name': 'Subject 7',
+            'id': '8df639ac-be4d-4083-81de-6779b0dcc0e7',
+            'completion': 0,
+            'modified': new Date(),
+            'topics': []
+        },
+        {
+            'name': 'Subject 8',
+            'id': '8df639ac-be4d-4083-81de-6779b0dcc0e8',
+            'completion': 0,
+            'modified': new Date(),
+            'topics': []
         }
     ] );
 
@@ -52,12 +101,24 @@
 </script>
 
 <template>
-    <div class="asset-manager">
+    <div v-if="this.$route.path === '/'" class="asset-manager">
         <p v-if="props.showPath">
             <!-- Renders the "/ > Subject > ..." -->
             <span v-for="(f, index) in folderPath" :key="index">{{ f }} > </span> ...
         </p>
         <div class="assets-list">
+            <div
+                v-for="(folder, index) in availableFolders"
+                :key="index"
+                :style="`width: ${100 / (props.itemsPerLine ?? 4) - 2}%;`"
+                @click="() => handleSelected( index )"
+            >
+                <AssetManagerNavigationElement :folder="folder" />
+            </div>
+        </div>
+    </div>
+    <div v-else class="asset-manager">
+        <div class="assets-list-2">
             <div
                 v-for="(folder, index) in availableFolders"
                 :key="index"
