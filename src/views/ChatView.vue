@@ -1,6 +1,8 @@
 <script setup lang="ts">
-    import { ref } from 'vue';
     import SidePanel from '@/components/SidePanel.vue';
+    import {
+        ref
+    } from 'vue';
     type SidePanelView = 'assets' | 'branches' | null;
     const activeSidePanel = ref<SidePanelView>( null );
     const sidePanelWidth = ref( 250 );

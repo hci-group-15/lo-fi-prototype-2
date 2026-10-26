@@ -1,5 +1,11 @@
 <script setup lang="ts">
+    import {
+        type Ref, ref
+    } from 'vue';
     import AssetManager from '@/components/assetManager/AssetManager.vue';
+    import type {
+        TechTree
+    } from '@/ts/techtree';
     import TreeRenderer from '@/components/popups/TreeRenderer.vue';
     import router from '@/router';
 
@@ -8,7 +14,7 @@
         'required': true
     } );
     const emit = defineEmits<{
-        resize: [ delta: number ]
+        'resize': [ delta: number ]
     }>();
 
     const togglePanel = ( panel: Exclude<SidePanelView, null> ) => {
@@ -38,6 +44,7 @@
             return;
 
         const delta = event.clientX - lastPointerX;
+
         lastPointerX = event.clientX;
 
         if ( delta !== 0 )
@@ -47,6 +54,58 @@
     const stopResize = () => {
         isResizing = false;
     };
+
+    const techTree: Ref<TechTree> = ref( {
+        'nodes': [
+            {
+                'name': 'Topic 0',
+                'x': 0,
+                'y': 0
+            },
+            {
+                'name': 'Topic 1',
+                'x': -150,
+                'y': 50
+            },
+            {
+                'name': 'Topic 2',
+                'x': 150,
+                'y': 50
+            },
+            {
+                'name': 'Topic 3',
+                'x': 0,
+                'y': 100
+            },
+            {
+                'name': 'Topic 4',
+                'x': -300,
+                'y': 100
+            }
+        ],
+        'edges': [
+            {
+                'from': 0,
+                'to': 1
+            },
+            {
+                'from': 0,
+                'to': 2
+            },
+            {
+                'from': 2,
+                'to': 3
+            },
+            {
+                'from': 1,
+                'to': 3
+            },
+            {
+                'from': 1,
+                'to': 4
+            }
+        ]
+    } );
 </script>
 
 <template>
@@ -88,7 +147,7 @@
             <AssetManager v-if="activePanel === 'assets'" />
             <template v-else>
                 <h2>Branches</h2>
-                <TreeRenderer prefix="branches" />
+                <TreeRenderer prefix="branches" :tech-tree="techTree" />
             </template>
         </aside>
         <div
