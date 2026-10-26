@@ -56,11 +56,16 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
     onMounted( () => {
         document.addEventListener( 'branch:add:start', openAddBranchPopup );
+        document.addEventListener( 'branch:overview:open', openAddBranchPopup );
     } );
 
     onUnmounted( () => {
         try {
-            document.removeEventListener( 'branch:add:start', openAddBranchPopup );
+            document.removeEventListener( 'branch:add:start', showBranches );
+        } catch { /* empty */ }
+
+        try {
+            document.removeEventListener( 'branch:overview:open', showBranches );
         } catch { /* empty */ }
     } );
 </script>

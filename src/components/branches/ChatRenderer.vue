@@ -10,6 +10,10 @@
     const openAddBranchPopup = () => {
         document.dispatchEvent( new CustomEvent( 'branch:add:start' ) );
     };
+
+    const openBranchesOverview = () => {
+        document.dispatchEvent( new CustomEvent( 'branch:overview:open' ) );
+    };
 </script>
 
 <template>
@@ -25,7 +29,7 @@
         </div>
         <div v-if="props.message.branches && props.message.branches.length > 0" class="chat-branching-indicator">
             <hr>
-            <p>
+            <p @click="openBranchesOverview">
                 <i class="fa-solid fa-code-branch"></i>
                 {{ props.message.branches!.length }} {{ props.message.branches.length > 1 ? 'Branches' : 'Branch' }}
             </p>
