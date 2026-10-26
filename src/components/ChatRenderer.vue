@@ -1,0 +1,31 @@
+<script setup lang="ts">
+    import type {
+        ChatMessagePair
+    } from '@/ts/types';
+
+    const props = defineProps<{
+        'message': ChatMessagePair
+    }>();
+</script>
+
+<template>
+    <div class="chat-messages-wrapper">
+        <div class="chat-messages-pair">
+            <p class="chat-messages-human">
+                {{ props.message.question }}
+            </p>
+            <div class="chat-messages-bot">
+                <p>{{ props.message.response }}</p>
+                <i class="fa-solid fa-code-branch" title="Create new branch here"></i>
+            </div>
+        </div>
+        <div v-if="props.message.branches && props.message.branches.length > 0" class="chat-branching-indicator">
+            <hr>
+            <p>
+                <i class="fa-solid fa-code-branch"></i>
+                {{ props.message.branches!.length }} {{ props.message.branches.length > 1 ? 'Branches' : 'Branch' }}
+            </p>
+        </div>
+        <ChatRenderer v-if="props.message.child" :message="props.message.child!" />
+    </div>
+</template>
