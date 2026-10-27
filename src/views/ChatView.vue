@@ -17,8 +17,8 @@
     } from '@/ts/state';
     type SidePanelView = 'assets' | 'branches' | 'flashcards-manager' | null;
     const activeSidePanel = ref<SidePanelView>( null );
-    const sidePanelWidth = ref( 250 );
-    const minSidePanelWidth = 220;
+    const sidePanelWidth = ref( 450 );
+    const minSidePanelWidth = 450;
     const maxSidePanelWidth = 600;
     const showAddBranch = ref( false );
 

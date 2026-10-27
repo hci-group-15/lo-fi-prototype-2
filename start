@@ -1,0 +1,1 @@
+sudo docker run -it -p 8081:8081 --rm -v .:/mnt ghcr.io/janishutz/dev-container-node
