@@ -101,7 +101,7 @@
 </script>
 
 <template>
-    <div v-if="this.$route.path === '/'" class="asset-manager">
+    <div v-if="$route.path === '/'" class="asset-manager">
         <p v-if="props.showPath">
             <!-- Renders the "/ > Subject > ..." -->
             <span v-for="(f, index) in folderPath" :key="index">{{ f }} > </span> ...

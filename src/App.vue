@@ -90,7 +90,7 @@
     flex-direction: column;
     overflow: hidden;
     border-radius: 20px;
-    transition: left 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     &.shown {
         right: 5px;
