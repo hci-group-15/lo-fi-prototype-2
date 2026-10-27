@@ -26,5 +26,6 @@ export default defineConfig( {
 `
             }
         }
-    }
+    },
+    'base': process.env.NODE_ENV === 'production' ? '/lo-fi-prototype-2/' : '/'
 } );
