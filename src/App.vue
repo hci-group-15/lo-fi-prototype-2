@@ -14,6 +14,10 @@
         showThemePanel.value = !showThemePanel.value;
     };
 
+    const closeThemes = () => {
+        showThemePanel.value = false
+    };
+
     const showThemePanel = ref( false );
 </script>
 
@@ -27,6 +31,7 @@
             @click="changeTheme();"
         >
         </i>
+        <div @click="closeThemes" id="theme-selection-backdrop" :class="showThemePanel ? 'shown' : undefined"></div>
         <div
             id="theme-selection-panel"
             :class="showThemePanel ? 'shown' : undefined"
@@ -73,6 +78,22 @@
     cursor: pointer;
 }
 
+#theme-selection-backdrop {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: var(--theme-shadow);
+        z-index: 99;
+        display: none;
+
+
+        &.shown {
+            display: block;
+        }
+}
+
 #theme-selection-panel {
     position: fixed;
     z-index: 100;
@@ -92,8 +113,9 @@
     border-radius: 20px;
     transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    &.shown {
+     &.shown {
         right: 5px;
+
     }
 
     >select {

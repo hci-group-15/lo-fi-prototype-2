@@ -34,6 +34,10 @@
         }
     };
 
+    const closeSearch = () => {
+        showSearchView.value = false;
+    };
+
     onMounted( () => {
         document.addEventListener( 'keydown', keyHandler );
         searchBox.value?.addEventListener( 'keydown', inputKeyHandler );
@@ -52,7 +56,7 @@
 
 <template>
     <div :class="['search', showSearchView ? undefined : 'hidden' ]">
-        <div class="search-backdrop"></div>
+        <div class="search-backdrop" @click="closeSearch"></div>
         <div class="search-main">
             <input
                 ref="search-box"
