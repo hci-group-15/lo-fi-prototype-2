@@ -34,6 +34,7 @@
     min-width: 0;
     overflow: auto;
     padding: 12px;
+    align-items: right;
   }
 
   .sidepanel-resize-handle {
@@ -48,10 +49,10 @@
   }
 
   .sidepanel-close {
-    align-self: flex-end;
+    align-self: flex-start;
     flex: 0 0 auto;
     width: auto;
-    margin: 0 0 12px auto;
+    margin: 0 auto 12px 0;
   }
 
   .sidepanel-content > .flashcard-manager {

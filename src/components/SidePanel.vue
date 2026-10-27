@@ -131,7 +131,7 @@
                 aria-label="Back to overview"
                 @click="backToOverview"
             >
-                <i class="fa-solid fa-arrow-left"></i>
+                <i class="fa-solid fa-house"></i>
             </button>
             <button
                 class="sidepanel-nav-button"
@@ -172,7 +172,7 @@
                 aria-label="Close sidepanel"
                 @click="activePanel = null"
             >
-                X
+                <i class="fa-solid fa-arrow-left"></i>
             </button>
             <AssetManager v-if="activePanel === 'assets'" />
             <template v-else-if="activePanel === 'flashcards-manager'">
