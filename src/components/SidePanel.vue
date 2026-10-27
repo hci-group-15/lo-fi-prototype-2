@@ -3,13 +3,16 @@
         type Ref, ref
     } from 'vue';
     import AssetManager from '@/components/assetManager/AssetManager.vue';
+    import FlashCards from '@/components/flashcards/FlashCards.vue';
+    import FlashCardsManager from './flashcards/FlashCardsManager.vue';
     import type {
         TechTree
     } from '@/ts/techtree';
     import TreeRenderer from '@/components/popups/TreeRenderer.vue';
     import router from '@/router';
-    import FlashCards from '@/components/flashcards/FlashCards.vue';
-    import FlashCardsManager from './flashcards/FlashCardsManager.vue';
+    import {
+        showSearchView
+    } from '@/ts/state';
 
     type SidePanelView = 'assets' | 'branches' | 'flashcards-manager' | null;
     const activePanel = defineModel<SidePanelView>( {
@@ -114,6 +117,10 @@
             }
         ]
     } );
+
+    const openSearch = () => {
+        showSearchView.value = true;
+    };
 </script>
 
 <template>
@@ -149,6 +156,13 @@
                 @click="togglePanel('flashcards-manager')"
             >
                 <img class="sidepanel-icon" src="/flashcards2.svg" alt="">
+            </button>
+            <button
+                class="sidepanel-nav-button"
+                aria-label="Search"
+                @click="openSearch"
+            >
+                <i class="fa-solid fa-search"></i>
             </button>
         </nav>
 
