@@ -4,6 +4,6 @@ import {
 
 export const showAssetManger = ref( false );
 
-export const showBranchView = ref( false );
-
 export const showFlashCardView = ref( false );
+
+export const showChatBranches = ref( false );
