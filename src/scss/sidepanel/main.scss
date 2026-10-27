@@ -17,6 +17,13 @@
 
   .sidepanel-nav-button {
     width: 100%;
+
+    .sidepanel-icon {
+      display: block;
+      width: 24px;
+      height: 24px;
+      margin: 0 auto;
+    }
   }
 
   .sidepanel-content {
@@ -45,6 +52,17 @@
     flex: 0 0 auto;
     width: auto;
     margin: 0 0 12px auto;
+  }
+
+  .sidepanel-content > .flashcard-manager {
+    flex: 1 1 auto;
+    min-height: 0;
+    height: auto;
+  }
+
+  .sidepanel-content > .open-flashcards {
+    flex: 0 0 auto;
+    margin-top: auto;
   }
 
   .subject {

@@ -9,6 +9,17 @@ export interface Topic {
     'topics': Topic[]
 }
 
+export interface Flashcard {
+    'name': string;
+    'id': string;
+    'target': string;
+    'hints' : string[];
+    'modified': Date;
+    'solvedCorrectly': number | null;
+    'topicId': number | null;
+    'branchesIds' : string[];
+}
+
 export interface ChatMessagePair {
     'question': string;
     'response': string;
