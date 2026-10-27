@@ -3,29 +3,34 @@
         onMounted,
         onUnmounted,
         ref,
-        useTemplateRef
+        useTemplateRef,
+        watch
     } from 'vue';
+    import {
+        showSearchView
+    } from '@/ts/state';
 
-    const isOpen = ref( false );
     const searchBox = useTemplateRef( 'search-box' );
     const cmd = ref( '' );
 
     const keyHandler = ( ev: KeyboardEvent ) => {
         if ( ev.ctrlKey && ev.key === ' ' ) {
-            isOpen.value = !isOpen.value;
-
-            if ( isOpen.value ) {
-                searchBox.value?.focus();
-            }
+            showSearchView.value = !showSearchView.value;
         }
     };
+
+    watch( showSearchView, () => {
+        if ( showSearchView.value ) {
+            searchBox.value?.focus();
+        }
+    } );
 
     const inputKeyHandler = ( ev: KeyboardEvent ) => {
         if ( ev.key === 'Escape' ) {
             if ( cmd.value.length > 0 )
                 cmd.value = '';
             else
-                isOpen.value = false;
+                showSearchView.value = false;
         }
     };
 
@@ -46,7 +51,7 @@
 </script>
 
 <template>
-    <div :class="['search', isOpen ? undefined : 'hidden' ]">
+    <div :class="['search', showSearchView ? undefined : 'hidden' ]">
         <div class="search-backdrop"></div>
         <div class="search-main">
             <input
