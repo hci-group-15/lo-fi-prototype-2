@@ -48,13 +48,14 @@
       }
 
       >.fa-solid {
-        width: 2rem;
-        height: 2rem;
+        width: 2.5rem;
+        height: 2.5rem;
         font-size: 1.6rem;
         display: flex;
         align-items: center;
         justify-content: center;
         background-color: var(--theme-primary);
+        color: var(--theme-on-primary);
         border-radius: 1rem;
         margin: 5px;
         cursor: pointer;
