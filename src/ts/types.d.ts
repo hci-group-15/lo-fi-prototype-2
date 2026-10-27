@@ -15,9 +15,9 @@ export interface Flashcard {
     'target': string;
     'hints' : string[];
     'modified': Date;
-    'solved_correctly': number | null;
-    'topic_id': number | null;
-    'branches_ids' : string[];
+    'solvedCorrectly': number | null;
+    'topicId': number | null;
+    'branchesIds' : string[];
 }
 
 export interface ChatMessagePair {

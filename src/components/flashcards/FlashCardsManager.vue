@@ -18,9 +18,9 @@
             'target': 'Understand and solve linear ordinary differential equations with constant coefficients',
             'hints' : ['characteristic polynomial', 'the choir where singers sing in harmony'],
             'modified': new Date(),
-            'solved_correctly': 0,
-            'topic_id': null,
-            'branches_ids' : []
+            'solvedCorrectly': 0,
+            'topicId': null,
+            'branchesIds' : []
         },
         {
             'name': 'Homogeneous versus non-homogeneous ODEs',
@@ -28,9 +28,9 @@
             'target': 'Understand the difference between homogeneous and non-homogeneous ODEs',
             'hints' : ['the bank account where money either grows by interest rate only, or also has outside deposits'],
             'modified': new Date(),
-            'solved_correctly': null,
-            'topic_id': 2,
-            'branches_ids' : []
+            'solvedCorrectly': null,
+            'topicId': 2,
+            'branchesIds' : []
         }
     ] );
 
@@ -85,7 +85,7 @@
                         <td>{{ flashcard['target'] }}</td>
                         <td>{{ flashcard.hints.join(', ') }}</td>
                         <td>{{ flashcard.modified.toLocaleDateString() }}</td>
-                        <td>{{ flashcard.solved_correctly ?? '—' }}</td>
+                        <td>{{ flashcard.solvedCorrectly ?? '—' }}</td>
                     </tr>
                 </tbody>
             </table>
