@@ -14,7 +14,7 @@
     ] );
     const availableFolders: Ref<Topic[]> = ref( [
         {
-            'name': 'Subject 1',
+            'name': 'Reaaalllllyyyy long subject name',
             'id': '31cbfd24-a2a6-4b84-b6d8-571798925ac9',
             'modified': new Date(),
             'completion': 0,
@@ -122,7 +122,6 @@
             <div
                 v-for="(folder, index) in availableFolders"
                 :key="index"
-                :style="`width: ${100 / (props.itemsPerLine ?? 4) - 2}%;`"
                 @click="() => handleSelected( index )"
             >
                 <AssetManagerNavigationElement :folder="folder" />

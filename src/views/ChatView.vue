@@ -5,8 +5,8 @@
     } from 'vue';
     type SidePanelView = 'assets' | 'branches' | null;
     const activeSidePanel = ref<SidePanelView>( null );
-    const sidePanelWidth = ref( 250 );
-    const minSidePanelWidth = 220;
+    const sidePanelWidth = ref( 450 );
+    const minSidePanelWidth = 450;
     const maxSidePanelWidth = 600;
 
     
